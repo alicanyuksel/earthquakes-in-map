@@ -1,11 +1,9 @@
-<script>    
+// array with all the quakes.
+var listFeatures = []
 
-    // array with all the quakes.
-    var listFeatures = []
-
-    for (var key in myGeocode.earthquakes) {
+for (var key in myGeocode.earthquakes) {
                                 
-        const feature = {
+    const feature = {
         'type': 'Feature',
         'properties': {
             'description':
@@ -13,39 +11,38 @@
                 Şiddet : ${myGeocode["earthquakes"][key].magnitude}<br>
                 Derinlik : ${myGeocode["earthquakes"][key].depth}<br>
                 Tarih : ${myGeocode["earthquakes"][key].time} - ${myGeocode["earthquakes"][key].date}`,
-            'infoAboutMagnitude': parseFloat(`${myGeocode["earthquakes"][key].magnitude}`)
-        },
-        'geometry': {
-            'type': 'Point',
-            'coordinates': [myGeocode["earthquakes"][key].longitude, myGeocode["earthquakes"][key].latitude]
-        }
+                'infoAboutMagnitude': parseFloat(`${myGeocode["earthquakes"][key].magnitude}`)
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [myGeocode["earthquakes"][key].longitude, myGeocode["earthquakes"][key].latitude]
+            }
     };
 
-        listFeatures.push(feature);
+    listFeatures.push(feature);
 
-    }
+}
 
-    // array with all quakes of today --> the features to show on map
-    var listFeaturesToday = []
+// array with all quakes of today --> the features to show on map
+var listFeaturesToday = []
 
-    // all today's earthquake to show the details in the box
-    var detailsTodayQuakes = []
+// all today's earthquake to show the details in the box
+var detailsTodayQuakes = []
 
-    var detailsOfAllQuakes = []
+var detailsOfAllQuakes = []
 
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; // because getMonth begin from 0. really sad !
-    var yyyy = today.getFullYear();
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; // because getMonth begin from 0. really sad !
+var yyyy = today.getFullYear();
 
-    today = yyyy+'.'+mm+'.'+dd;
+today = yyyy+'.'+mm+'.'+dd;
 
-        for (var key in myGeocode.earthquakes) {
-
-            const feature = {
-                'type': 'Feature',
-                'properties': {
-                    'description':
+for (var key in myGeocode.earthquakes) {
+    const feature = {
+        'type': 'Feature',
+        'properties': {
+                        'description':
                         `<strong>Lokasyon : ${myGeocode["earthquakes"][key].location}</strong><br>
                         Şiddet : ${myGeocode["earthquakes"][key].magnitude}<br>
                         Derinlik : ${myGeocode["earthquakes"][key].depth}<br>
@@ -57,7 +54,7 @@
                 }
             };
 
-            const quakeDetail = {
+    const quakeDetail = {
                 location: myGeocode.earthquakes[key].location,
                 magnitude: myGeocode.earthquakes[key].magnitude,
                 depth: myGeocode.earthquakes[key].depth,
@@ -67,11 +64,11 @@
                 longitude: myGeocode.earthquakes[key].longitude
             }
 
-            detailsOfAllQuakes.push(quakeDetail);
+    detailsOfAllQuakes.push(quakeDetail);
             
 
-            if (myGeocode.earthquakes[key].date == today) {
-                const quakeToday = {
+    if (myGeocode.earthquakes[key].date == today) {
+        const quakeToday = {
                     location: myGeocode.earthquakes[key].location,
                     magnitude: myGeocode.earthquakes[key].magnitude,
                     depth: myGeocode.earthquakes[key].depth,
@@ -81,66 +78,69 @@
                     longitude: myGeocode.earthquakes[key].longitude
                 }
 
-                // append details of quake into our array
-                detailsTodayQuakes.push(quakeToday); 
+        // append details of quake into our array
+        detailsTodayQuakes.push(quakeToday); 
 
-                // append the features into our array to show on map with pulsing dot
-                listFeaturesToday.push(feature);
-            }
-            
-        };
-
-
-    // array with all important quakes --> it's about the quakes details to show in a box.
-    // important quakes with a range value !
-    
-    var listFeaturesImportantQuakes;
-    var detailsOfAllEarthquakes;
-
-    function getImportantQuakes(myGeocode, listFeaturesImportantQuakes, rangeValue) {
-
-        listFeaturesImportantQuakes = [];    
-
-        for (var key in myGeocode.earthquakes.slice(null, rangeValue)) {
-            if (parseFloat(myGeocode.earthquakes[key].magnitude) > 4.0) {
-                const importantQuake = {
-                    location: myGeocode.earthquakes[key].location,
-                    magnitude: myGeocode.earthquakes[key].magnitude,
-                    depth: myGeocode.earthquakes[key].depth,
-                    date: myGeocode.earthquakes[key].date,
-                    time: myGeocode.earthquakes[key].time,
-                    latitude: myGeocode.earthquakes[key].latitude,
-                    longitude: myGeocode.earthquakes[key].longitude
-                }
-                listFeaturesImportantQuakes.push(importantQuake);
-            }
-        }
-        return listFeaturesImportantQuakes;
+        // append the features into our array to show on map with pulsing dot
+        listFeaturesToday.push(feature);
     }
-
-    listFeaturesImportantQuakes = getImportantQuakes(myGeocode, listFeaturesImportantQuakes, defaultRangeValue);   
-
-
-
-    // call function to initialize the map with the features as parameters.
+            
+};
 
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2FueXVrc2VsIiwiYSI6ImNrZjdqeXRoYzAzMzkzMGxjaHp4dzV3MXcifQ.R9_umqd9SXl02sJE8wQc3g';
-    var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/alicanyuksel/ckf7kg2t70iah19np73mhnx48', // stylesheet location
-    center: [35.451395, 38.989320], // starting position [lng, lat]
-    zoom: 5 // starting zoom
-    });
 
-    // dot !!!
+// array with all important quakes --> it's about the quakes details to show in a box.
+// important quakes with a range value !
+    
+var listFeaturesImportantQuakes;
+var detailsOfAllEarthquakes;
 
-    var size = 200;
+function getImportantQuakes(myGeocode, listFeaturesImportantQuakes, rangeValue) {
+
+    listFeaturesImportantQuakes = [];    
+
+    for (var key in myGeocode.earthquakes.slice(null, rangeValue)) {
+        if (parseFloat(myGeocode.earthquakes[key].magnitude) > 4.0) {
+            const importantQuake = {
+                    location: myGeocode.earthquakes[key].location,
+                    magnitude: myGeocode.earthquakes[key].magnitude,
+                    depth: myGeocode.earthquakes[key].depth,
+                    date: myGeocode.earthquakes[key].date,
+                    time: myGeocode.earthquakes[key].time,
+                    latitude: myGeocode.earthquakes[key].latitude,
+                    longitude: myGeocode.earthquakes[key].longitude
+                }
+
+                listFeaturesImportantQuakes.push(importantQuake);
+        }
+    }
+    
+    return listFeaturesImportantQuakes;
+}
+
+listFeaturesImportantQuakes = getImportantQuakes(myGeocode, listFeaturesImportantQuakes, defaultRangeValue);   
 
 
-    // implementation of CustomLayerInterface to draw a pulsing dot icon on the map
-    // see https://docs.mapbox.com/mapbox-gl-js/api/#customlayerinterface for more info
-    var pulsingDot_red = {
+
+// call function to initialize the map with the features as parameters.
+
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2FueXVrc2VsIiwiYSI6ImNrZjdqeXRoYzAzMzkzMGxjaHp4dzV3MXcifQ.R9_umqd9SXl02sJE8wQc3g';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/alicanyuksel/ckf7kg2t70iah19np73mhnx48', // stylesheet location
+center: [35.451395, 38.989320], // starting position [lng, lat]
+zoom: 5 // starting zoom
+});
+
+// dot !!!
+
+var size = 200;
+
+
+// implementation of CustomLayerInterface to draw a pulsing dot icon on the map
+// see https://docs.mapbox.com/mapbox-gl-js/api/#customlayerinterface for more info
+var pulsingDot_red = {
         width: size,
         height: size,
         data: new Uint8Array(size * size * 4),
@@ -204,9 +204,9 @@
             // return `true` to let the map know that the image was updated
             return true;
         }        
-    };
+};
 
-    var pulsingDot_green = {
+var pulsingDot_green = {
         width: size,
         height: size,
         data: new Uint8Array(size * size * 4),
@@ -270,9 +270,9 @@
             // return `true` to let the map know that the image was updated
             return true;
         }        
-    };
+};
 
-    var pulsingDot_yellow = {
+var pulsingDot_yellow = {
         width: size,
         height: size,
         data: new Uint8Array(size * size * 4),
@@ -336,53 +336,52 @@
             // return `true` to let the map know that the image was updated
             return true;
         }        
-    };
+};
         
-        function addPulsingDot(pulsingDotName, pulsingDotVariable, pixelRatio, layerId, sourceName, feature) {
+function addPulsingDot(pulsingDotName, pulsingDotVariable, pixelRatio, layerId, sourceName, feature) {
 
-            map.on('load', function () {
-                map.addImage(pulsingDotName, pulsingDotVariable, { pixelRatio: pixelRatio });
+    map.on('load', function () {
+        map.addImage(pulsingDotName, pulsingDotVariable, { pixelRatio: pixelRatio });
 
-                map.addSource(sourceName, {
-                    'type': 'geojson',
-                    'data': {
+            map.addSource(sourceName, {
+                'type': 'geojson',
+                'data': {
                         'type': 'FeatureCollection',
                         'features': feature
-                    }
-                    });
+                        }
+            });
         
-                        // Add a layer showing the places.
-                        map.addLayer({
-                            'id': layerId,
-                            'type': 'symbol',
-                            'source': sourceName,
+        // Add a layer showing the places.
+        map.addLayer({
+                    'id': layerId,
+                    'type': 'symbol',
+                    'source': sourceName,
                             
-                            'layout': {
-                                'icon-image': pulsingDotName,
-                                'icon-allow-overlap': true
+                    'layout': {
+                            'icon-image': pulsingDotName,
+                            'icon-allow-overlap': true
                             }
-                        });
-                    }
-                );
+            });
+});
 
                 
-                map.on('click', layerId, function (e) {
-                    map.flyTo({
+        map.on('click', layerId, function (e) {
+            map.flyTo({
                     center: e.features[0].geometry.coordinates,
                     zoom: 8
-                    });
                 });
+            });
                 
 
                 
         
-                // Create a popup, but don't add it to the map yet.
-                var popup = new mapboxgl.Popup({
+    // Create a popup, but don't add it to the map yet.
+        var popup = new mapboxgl.Popup({
                     closeButton: false,
                     closeOnClick: false
                 });
         
-                map.on('mouseenter', layerId, function (e) {
+        map.on('mouseenter', layerId, function (e) {
                     // Change the cursor style as a UI indicator.
                     map.getCanvas().style.cursor = 'pointer';
         
@@ -408,42 +407,39 @@
                 });
 
 
-        }
+}
     
 
-        // filter listFeatures with the magnitude (red, yellow, green pulsing dot)
-        function getFilteredEarthquakes(listFeatures, defaultRangeValue) {
+// filter listFeatures with the magnitude (red, yellow, green pulsing dot)
+function getFilteredEarthquakes(listFeatures, defaultRangeValue) {
 
-            var green_features = []
-            var yellow_features = []
-            var red_features = []
+    var green_features = []
+    var yellow_features = []
+    var red_features = []
 
-            for (var key in listFeatures.slice(null, defaultRangeValue)) {
-                if (listFeatures[key].properties.infoAboutMagnitude > 0 && listFeatures[key].properties.infoAboutMagnitude < 2) {
-                    green_features.push(listFeatures[key]);
-                }
-                else if (listFeatures[key].properties.infoAboutMagnitude > 2 && listFeatures[key].properties.infoAboutMagnitude < 4) {
-                    yellow_features.push(listFeatures[key]);
-                }
-                else if (listFeatures[key].properties.infoAboutMagnitude > 4) {
-                    red_features.push(listFeatures[key]);
-                }
+    for (var key in listFeatures.slice(null, defaultRangeValue)) {
+        if (listFeatures[key].properties.infoAboutMagnitude > 0 && listFeatures[key].properties.infoAboutMagnitude < 2) {
+            green_features.push(listFeatures[key]);
+        }
+        else if (listFeatures[key].properties.infoAboutMagnitude > 2 && listFeatures[key].properties.infoAboutMagnitude < 4) {
+            yellow_features.push(listFeatures[key]);
+        }
+        else if (listFeatures[key].properties.infoAboutMagnitude > 4) {
+            red_features.push(listFeatures[key]);
+        }
 
-            }
+    }
 
-        return {
+    return {
             green_features, yellow_features, red_features
         }
-        }
+ }
         
     
-    allFeaturesQuakes = getFilteredEarthquakes(listFeatures, defaultRangeValue);
+allFeaturesQuakes = getFilteredEarthquakes(listFeatures, defaultRangeValue);
     
-    addPulsingDot("pulsing-dot-green", pulsingDot_green, 6, "places_green", "points_green", allFeaturesQuakes.green_features);
-    addPulsingDot("pulsing-dot-yellow", pulsingDot_yellow, 6, "places_yellow", "points_yellow", allFeaturesQuakes.yellow_features);
-    addPulsingDot("pulsing-dot-red", pulsingDot_red, 4, "places_red", "points_red", allFeaturesQuakes.red_features);
+addPulsingDot("pulsing-dot-green", pulsingDot_green, 6, "places_green", "points_green", allFeaturesQuakes.green_features);
+addPulsingDot("pulsing-dot-yellow", pulsingDot_yellow, 6, "places_yellow", "points_yellow", allFeaturesQuakes.yellow_features);
+addPulsingDot("pulsing-dot-red", pulsingDot_red, 4, "places_red", "points_red", allFeaturesQuakes.red_features);
 
 
-                
-
-</script>

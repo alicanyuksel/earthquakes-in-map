@@ -13,7 +13,6 @@ from resources.earthquake import Earthquake, EarthquakesList
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
-app.secret_key = "alican"
 api = Api(app)
 
 api.add_resource(Earthquake, "/earthquake/<int:id_>")

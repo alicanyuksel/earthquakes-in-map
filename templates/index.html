@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Son Depremleri Göster</title>
+
+    <script>const myGeocode = {{ data | tojson }};</script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%;}
+       
+
+          .infoQuakesImportant {
+            position: absolute;
+            top: 400px;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            border: 3px solid black;
+            border-radius: 20px;
+            background-color: white;
+            opacity: 0.7;
+            overflow: scroll;
+          }
+
+          .infoLastQuakes {
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            border: 3px solid black;
+            border-radius: 20px;
+            background-color: white;
+            opacity: 0.7;
+            overflow: scroll;
+          }
+
+          p {
+            color: black;
+            font-family: sans-serif;
+            font-size: 14px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-block: 0;
+            
+          }
+
+          h5 {
+            color: red;
+            font-family: sans-serif;
+            margin-top: 10px;
+
+          }
+        
+            
+        #navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 9;
+   
+        }
+        
+    </style>
+
+    <style>
+        fieldset > * {
+        vertical-align: middle;
+    }
+    
+    .leftlabel, .rightlabel {
+        display: inline-block;
+        width: 50px;
+        padding: 2px;
+        text-align: center;
+    }
+    
+    .leftlabel {
+        background-color: red;
+        color: white;
+    }
+    .rightlabel {
+        background-color: purple;
+        color: white;
+    }
+    
+    label {
+        display: inline-block;
+        width: 50px;
+    }
+
+    </style>
+
+</head>
+
+<body>   
+    <script>
+        const defaultRangeValue = 50;
+        
+    </script>
+
+    <div id="navbar">
+        {% include "navbar.html" %}
+    </div>   
+</div>
+
+    <div id="map">
+        {% include "map.html" %}
+    </div>
+
+
+    <!-- 
+        Last quakes box
+    -->
+    {% include "lastQuakes.html" %}
+    <div id="infoLastQuakes" class='infoLastQuakes'>
+        
+    </div>
+
+    <script> 
+        let lastQuakesBox = document.getElementById("infoLastQuakes");
+        writeLastQuakes(detailsOfAllQuakes, defaultRangeValue);
+    </script>
+
+    
+
+
+    <!-- 
+        Important quakes box
+    -->
+    {% include "importantquake.html" %}
+    <div id="infoQuakesImportant" class='infoQuakesImportant'>
+
+    </div>
+
+    <script>
+        let infoQuakesImportantBox = document.getElementById("infoQuakesImportant");
+        writeImportantQuakes(listFeaturesImportantQuakes, defaultRangeValue);
+        
+    </script>
+    
+</body>
+</html>

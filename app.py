@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from flask_restful import Api
 import requests
 
+import os
+
 # intern package
 from db import db
 from config import db_name, url_api_backend
@@ -9,7 +11,7 @@ from resources.earthquake import Earthquake, EarthquakesList
 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_name}"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///data.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 api = Api(app)
 

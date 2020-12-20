@@ -1,4 +1,4 @@
-db_name = "data.db"
+domain_name = #CHANGE IT
 data_txt_name = "data.txt"
 
-url_api_backend = "http://127.0.0.1:5000/earthquakes"
+url_api_backend = f"{domain_name}/earthquakes"

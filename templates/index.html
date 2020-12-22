@@ -23,48 +23,92 @@
 <body>   
     <script>
         const defaultRangeValue = 50;
+
+        var navToggled = false;
+        function toggleNav() {
+            if (navToggled) {
+                openNav();
+                setButtonContent() 
+                navToggled = false;
+            } else {
+                closeNav();
+                setButtonContent() 
+                navToggled = true;
+            }
+        }
+
+
+        function setButtonContent() {
+            if (navToggled) {
+                document.getElementById("openbtn").textContent = '\u2715 Kapat';
+            } else {
+                document.getElementById("openbtn").textContent = "\u2630 Son Depremleri Listele"
+            }
+        }
+
+
+        /* Set the width of the sidebar to 250px (show it) */
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "auto";
+        }
+        
+        /* Set the width of the sidebar to 0 (hide it) */
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
         
     </script>
 
-    <div id="navbar">
-        {% include "navbar.html" %}
-    </div>   
-</div>
-
+    {% include "navbar.html" %}
+        
+        
     <div id="map">
-        <script src="assets/js/map.js"></script>
+        <script src="static/js/map.js"></script>
     </div>
 
-
+   
     <!-- 
         Last quakes box
     -->
-    <script src="assets/js/lastQuakes.js"></script>
-    <div id="infoLastQuakes" class='infoLastQuakes'>
-        
-    </div>
 
-    <script> 
-        let lastQuakesBox = document.getElementById("infoLastQuakes");
-        writeLastQuakes(detailsOfAllQuakes, defaultRangeValue);
-    </script>
-
+    <script src="static/js/lastQuakes.js"></script>
     
 
-
+    
     <!-- 
         Important quakes box
     -->
-    <script src="assets/js/importantQuake.js"></script>
-    <div id="infoQuakesImportant" class='infoQuakesImportant'>
+    <script src="static/js/importantQuake.js"></script>   
 
+
+    <div class="buttonSideMenu"> 
+        <button id="openbtn" class="openbtn" onclick="toggleNav();">&#10005; Kapat</button>
     </div>
+        
+
+    <div class="wrapper">
+
+    
+    <div id="mySidebar" class="sidebar">
+      
+        <div id="infoLastQuakes" class='infoLastQuakes'></div><br>
+        <div id="infoQuakesImportant" class='infoQuakesImportant'></div>
+    </div>
+
+</div>
+
+    
+      <script> 
+        let lastQuakesBox = document.getElementById("infoLastQuakes");
+        writeLastQuakes(detailsOfAllQuakes, defaultRangeValue);
+    </script>
 
     <script>
         let infoQuakesImportantBox = document.getElementById("infoQuakesImportant");
         writeImportantQuakes(listFeaturesImportantQuakes, defaultRangeValue);
         
     </script>
+
     
 </body>
 </html>

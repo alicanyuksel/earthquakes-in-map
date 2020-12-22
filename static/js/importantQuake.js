@@ -9,7 +9,7 @@ function writeImportantQuakes(listFeaturesImportantQuakes, rangeValue) {
         let htmlContent = "<center><h5>Önemli depremler</h5></center><hr>"
         for (var key in listFeaturesImportantQuakes) {
             htmlContent += `
-            <a id="linkToFly" href="#" onclick="geoToFly(${listFeaturesImportantQuakes[key].longitude}, ${listFeaturesImportantQuakes[key].latitude});"><p>Lokasyon: ${listFeaturesImportantQuakes[key].location}</p></a>
+            <a id="linkToFly" href="#" onclick="geoToFly(${listFeaturesImportantQuakes[key].longitude}, ${listFeaturesImportantQuakes[key].latitude}); toggleNav();"><p>Lokasyon: ${listFeaturesImportantQuakes[key].location}</p></a>
             <b><p style=color:red;>Şiddet: ${listFeaturesImportantQuakes[key].magnitude}</p></b>
             <p>Derinlik: ${listFeaturesImportantQuakes[key].depth}</p>
             <p>Saat/Tarih: ${listFeaturesImportantQuakes[key].time} - ${listFeaturesImportantQuakes[key].date}</p><hr>

@@ -100,7 +100,7 @@ function getImportantQuakes(myGeocode, listFeaturesImportantQuakes, rangeValue) 
     listFeaturesImportantQuakes = [];    
 
     for (var key in myGeocode.earthquakes.slice(null, rangeValue)) {
-        if (parseFloat(myGeocode.earthquakes[key].magnitude) > 4.0) {
+        if (parseFloat(myGeocode.earthquakes[key].magnitude) >= 4.0) {
             const importantQuake = {
                     location: myGeocode.earthquakes[key].location,
                     magnitude: myGeocode.earthquakes[key].magnitude,
@@ -421,10 +421,10 @@ function getFilteredEarthquakes(listFeatures, defaultRangeValue) {
         if (listFeatures[key].properties.infoAboutMagnitude > 0 && listFeatures[key].properties.infoAboutMagnitude < 2) {
             green_features.push(listFeatures[key]);
         }
-        else if (listFeatures[key].properties.infoAboutMagnitude > 2 && listFeatures[key].properties.infoAboutMagnitude < 4) {
+        else if (listFeatures[key].properties.infoAboutMagnitude >= 2 && listFeatures[key].properties.infoAboutMagnitude < 4) {
             yellow_features.push(listFeatures[key]);
         }
-        else if (listFeatures[key].properties.infoAboutMagnitude > 4) {
+        else if (listFeatures[key].properties.infoAboutMagnitude >= 4) {
             red_features.push(listFeatures[key]);
         }
 

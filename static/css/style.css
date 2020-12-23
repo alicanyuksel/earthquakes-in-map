@@ -140,7 +140,7 @@ margin-left: 50px;
 .openbtn {
 font-size: 20px;
 cursor: pointer;
-background-color: #212529;
+background-color: brown;
 border-radius: 20px;
 color: white;
 padding: 10px 15px;
@@ -148,7 +148,7 @@ border: none;
 }
 
 .openbtn:hover {
-background-color: #444;
+background-color: brown;
 }
 
 
@@ -188,7 +188,7 @@ height: auto;
 }
 
 .openbtn {
-font-size: 10px;
+font-size: 15px;
 }
 
 #infoNavbar {
@@ -222,6 +222,10 @@ width: 200px;
 height: 200px;
 
 }
+
+.openbtn {
+    font-size: 12px;
+    }
 
 p {
 font-size: 10px;

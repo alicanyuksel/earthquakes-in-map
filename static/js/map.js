@@ -125,7 +125,7 @@ listFeaturesImportantQuakes = getImportantQuakes(myGeocode, listFeaturesImportan
 // call function to initialize the map with the features as parameters.
 
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2FueXVrc2VsIiwiYSI6ImNrZjdqeXRoYzAzMzkzMGxjaHp4dzV3MXcifQ.R9_umqd9SXl02sJE8wQc3g';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2FueXVrc2VsIiwiYSI6ImNrajF1eHNmZDUwb3cycnFqbmh0ZnUwankifQ.4qDM0Cs441wYsRUyCrsM4Q';
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/alicanyuksel/ckf7kg2t70iah19np73mhnx48', // stylesheet location

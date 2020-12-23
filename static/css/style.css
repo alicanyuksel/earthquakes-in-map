@@ -1,228 +1,240 @@
 body,html { margin: 0; padding: 0; height: 100%;}
-#map { position: fixed; bottom:0; top: 0; width: 100%; height: 100%;}
-       
+#map { position: fixed; top:0; bottom: 0; width: 100%; height: 100%;}
+
 
 .infoLastQuakes {
-    width: 300px;
-    height: 300px;
-    border: 2px solid black;
-    border-radius: 20px;
-    background-color: #212529;
-    opacity: 0.7;
-    overflow: scroll;
-    float: right;
+width: 300px;
+height: 300px;
+border: 2px solid black;
+border-radius: 20px;
+background-color: #212529;
+opacity: 0.7;
+overflow: scroll;
+float: right;
 }
 
 .infoQuakesImportant {
-    width: 300px;
-    height: 300px;
-    margin-top: 5px;
-    border: 2px solid black;
-    border-radius: 20px;
-    background-color: #212529;
-    opacity: 0.7;
-    overflow: scroll;    
-    float: right;
-    clear: right;
+width: 300px;
+height: 300px;
+margin-top: 5px;
+border: 2px solid black;
+border-radius: 20px;
+background-color: #212529;
+opacity: 0.7;
+overflow: scroll;    
+float: right;
+clear: right;
 }
 
 p {
-    color: white;
-    font-family: sans-serif;
-    font-size: 14px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-block: 0;
-            
+color: white;
+font-family: sans-serif;
+font-size: 14px;
+margin:0;
+margin-left: 10px;
+margin-right: 10px;
+
+    
 }
 
 h5 {
-    color: red;
-    font-family: sans-serif;
-    margin-top: 10px;
+color: red;
+font-family: sans-serif;
+margin-top: 10px;
 }
-        
+
 
 .container {
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    width: 100%;  
+position: fixed;
+z-index: 1;
+top: 0;
+width: 100%;  
 }
 
 
 .navbar {
-    z-index: 1;
-    top: 0;
-    width: 100%;
+z-index: 1;
+top: 0;
+width: 100%;
 
 }
+
+
 
 .slidecontainer {
-    width: 100%; /* Width of the outside container */
+width: 100%; /* Width of the outside container */
 }
-   
+
 
 fieldset > * {
-    vertical-align: middle;
+vertical-align: middle;
 }
-    
+
 .leftlabel, .rightlabel {
-    display: inline-block;
-    width: 50px;
-    padding: 2px;
-    text-align: center;
+display: inline-block;
+width: 50px;
+padding: 2px;
+text-align: center;
 }
-    
+
 .leftlabel {
-    background-color: red;
-    color: white;
+background-color: red;
+color: white;
 }
 .rightlabel {
-    background-color: purple;
-    color: white;
+background-color: purple;
+color: white;
 }
-    
+
 label {
-    display: inline-block;
-    width: 20px;
+display: inline-block;
+width: 20px;
 }
 
 .wrapper {
-    height: 100%; /* 100% Full-height */
-    width: auto; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    right: 0;
-    background-color: transparent; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 0; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+width: auto; /* 0 width - change this with JavaScript */
+float: right;
+clear: both;
+background-color: transparent; /* Black*/
+overflow-x: hidden; /* Disable horizontal scroll */
+z-index: 2;
 }
 
-  /* The sidebar links */
-  .sidebar a {
-    
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidebar a:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Position and style the close button (top right corner) */
-  .sidebar .closebtn {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  /* The button used to open the sidebar */
-  .openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #212529;
-    border-radius: 20px;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-  }
-  
-  .openbtn:hover {
-    background-color: #444;
-  }
-  
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-  .buttonSideMenu {
-    position: relative;
-    float: right;
-    transition: margin-left .5s; /* If you want a transition effect */
-    padding: 20px;
-  }
-  
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+.buttonSideMenu {
+position: relative;
+z-index: 1;
+float: right;
+transition: margin-left .5s; /* If you want a transition effect */
+padding: 20px;
+}
+
+
+/* The sidebar links */
+.sidebar a {
+
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+position: absolute;
+cursor: pointer;
+top: 0;
+right: 25px;
+font-size: 36px;
+margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+font-size: 20px;
+cursor: pointer;
+background-color: #212529;
+border-radius: 20px;
+color: white;
+padding: 10px 15px;
+border: none;
+}
+
+.openbtn:hover {
+background-color: #444;
+}
+
+
 
 @media screen and (max-width : 425px) {
-    .container {
-        height: auto; 
-    }
 
-    .sidebar {
-        width: auto;
-        height: auto;
-        bottom:0;
-    }
+.container {
+height: auto; 
+}
 
-    .sidebar a {font-size: 10px;}
+.sidebar {
+width: auto;
+height: auto;
+bottom:0;
+}
 
-    p {
-        font-size: 10px;
-    }
+.sidebar a {font-size: 10px;}
 
-    .infoQuakesImportant {
-        width: 200px;
-        height: 200px;
+p {
+font-size: 10px;
+}
 
-    }
+.infoQuakesImportant {
+width: 300px;
+height: 280px;
 
-    .infoLastQuakes {
-        width: 200px;
-        height: 200px;
-    }
+}
 
-    .buttonSideMenu {
-        width: auto;
-        height: auto;
-    }
+.infoLastQuakes {
+width: 300px;
+height: 280px;
+}
 
-    .openbtn {
-        font-size: 10px;
-    }
+.buttonSideMenu {
+width: auto;
+height: auto;
+}
 
-    #infoNavbar {
-        font-size: 13px;
-    }
+.openbtn {
+font-size: 10px;
+}
 
-    .leftlabel, .rightlabel {
-        display: inline-block;
-        width: 25px;
-        height: 20px;
-        padding: 2px;
-        text-align: center;
-        font-size: 12px;
-    }
+#infoNavbar {
+font-size: 13px;
+}
 
-    label {
-        display: inline-block;
-        width: 20px;
-        
-    }
+.leftlabel, .rightlabel {
+display: inline-block;
+width: 25px;
+height: 20px;
+padding: 2px;
+text-align: center;
+font-size: 12px;
+}
 
-    h5 {
-        font-size: 15px;
-    }
+label {
+display: inline-block;
+width: 20px;
+
+}
+
+h5 {
+font-size: 15px;
+}
 }
 
 @media screen and (max-width : 320px) {
-    .infoQuakesImportant {
-        width: 200px;
-        height: 180px;
 
-    }
+.infoQuakesImportant {
+width: 200px;
+height: 200px;
 
-    .infoLastQuakes {
-        width: 200px;
-        height: 180px;
-    }
+}
 
-    h5 {
-        font-size: 13px;
-    }
+p {
+font-size: 10px;
+}
+
+.infoLastQuakes {
+width: 200px;
+height: 200px;
+}
+
+h5 {
+font-size: 13px;
+}
+
+
 }

@@ -1,67 +1,70 @@
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <span id="infoNavbar" class="navbar-text">
-              <script>
-                document.write(`Son ${defaultRangeValue} deprem görüntüleniyor. Yandan güncelleyebilirsiniz.`)
-              </script>
-            
-          </span>
-        </ul>
-    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <ul class="navbar-nav mr-auto">
+      <span id="infoNavbar" class="navbar-text">
+          <script>
+            document.write(`Son ${defaultRangeValue} deprem görüntüleniyor. Yandan güncelleyebilirsiniz.`)
+          </script>
+      </span>
+    </ul>
+    <div id="slidecontainer">
         <span class="leftlabel">25</span>
-        <script>
-            document.write(`<input type="range" id="myRange" min="25" max="500" value="${defaultRangeValue}" class="slider" step="25" oninput="updateValues(this.value)" onchange="updateValues(this.value)">`);
-        </script>
+    <script>
+        document.write(`<input type="range" id="myRange" min="25" max="500" value="${defaultRangeValue}"  step="25" oninput="updateValues(this.value)" onchange="updateValues(this.value)">`);
+    </script>
+    <span class="rightlabel">500</span>
+
     
-        <span class="rightlabel">500</span>
+    </div> 
+
+
+
+    <script>
+    
+
+    var rangeInput = document.getElementById("myRange").value;
+    let infoNavbar = document.getElementById("infoNavbar");
+
+
+    function updateValues(newVal) {
+        rangeInput = newVal;
+        infoNavbar.innerHTML = `Son ${newVal} deprem görüntüleniyor. Yandan güncelleyebilirsiniz.`;   
         
-        </div>
-        <script>
+        // to filter all quakes with the magnitude by adding a color on pulsing dots.
 
-        var rangeInput = document.getElementById("myRange").value;
-        let infoNavbar = document.getElementById("infoNavbar");
+        allFeaturesQuakes = getFilteredEarthquakes(listFeatures, rangeInput);
 
+        var newGeoJSONForGreen = {
+            'type': 'FeatureCollection',
+            'features': allFeaturesQuakes.green_features
+            };
 
-        function updateValues(newVal) {
-            rangeInput = newVal;
-            infoNavbar.innerHTML = `Son ${newVal} deprem görüntüleniyor. Yandan güncelleyebilirsiniz.`;   
-            
-            // to filter all quakes with the magnitude by adding a color on pulsing dots.
+        var newGeoJSONForYellow = {
+            'type': 'FeatureCollection',
+            'features': allFeaturesQuakes.yellow_features
+            };
+    
+        var newGeoJSONForRed = {
+            'type': 'FeatureCollection',
+            'features': allFeaturesQuakes.red_features
+            };
 
-            allFeaturesQuakes = getFilteredEarthquakes(listFeatures, rangeInput);
+        // set all of them in the map to update
+        map.getSource('points_green').setData(newGeoJSONForGreen);
+        map.getSource('points_yellow').setData(newGeoJSONForYellow);
+        map.getSource('points_red').setData(newGeoJSONForRed);
 
-            var newGeoJSONForGreen = {
-                'type': 'FeatureCollection',
-                'features': allFeaturesQuakes.green_features
-                };
+        // update the list which contains all importants quakes with a range value given by user
+        listFeaturesImportantQuakes = getImportantQuakes(myGeocode, listFeaturesImportantQuakes, rangeInput);
 
-            var newGeoJSONForYellow = {
-                'type': 'FeatureCollection',
-                'features': allFeaturesQuakes.yellow_features
-                };
-        
-            var newGeoJSONForRed = {
-                'type': 'FeatureCollection',
-                'features': allFeaturesQuakes.red_features
-                };
-
-            // set all of them in the map to update
-            map.getSource('points_green').setData(newGeoJSONForGreen);
-            map.getSource('points_yellow').setData(newGeoJSONForYellow);
-            map.getSource('points_red').setData(newGeoJSONForRed);
-
-            // update the list which contains all importants quakes with a range value given by user
-            listFeaturesImportantQuakes = getImportantQuakes(myGeocode, listFeaturesImportantQuakes, rangeInput);
-
-            // to write the data on a div box on html page
-            writeImportantQuakes(listFeaturesImportantQuakes, rangeInput);
+        // to write the data on a div box on html page
+        writeImportantQuakes(listFeaturesImportantQuakes, rangeInput);
 
 
-            // update last quakes with a range value given by user 
-            writeLastQuakes(detailsOfAllQuakes, rangeInput);
+        // update last quakes with a range value given by user 
+        writeLastQuakes(detailsOfAllQuakes, rangeInput);
 
-        }
-        </script>        
-    </nav>
+    }
+    </script>  
+    
+
+</nav>

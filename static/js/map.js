@@ -129,7 +129,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2FueXVrc2VsIiwiYSI6ImNrajIxZzk1azBvdnUzM
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/alicanyuksel/ckf7kg2t70iah19np73mhnx48', // stylesheet location
-center: [35.451395, 38.989320], // starting position [lng, lat]
+center: [37.870625, 38.867298], // starting position [lng, lat]
 zoom: 5 // starting zoom
 });
 

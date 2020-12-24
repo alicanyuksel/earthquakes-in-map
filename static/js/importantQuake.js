@@ -1,12 +1,12 @@
 function writeImportantQuakes(listFeaturesImportantQuakes, rangeValue) {
 
     if (listFeaturesImportantQuakes.length == 0) {
-        infoQuakesImportantBox.innerHTML = `<center><h5>Önemli depremler</h5></center><hr>
+        infoQuakesImportantBox.innerHTML = `<center><h5>Önemli Depremler</h5></center><hr>
                                             <p>Seçili ${rangeValue} deprem içinde 4 şiddetinin üstünde gösterilecek bir deprem yok.</p>`;
 
     }
     else {
-        let htmlContent = "<center><h5>Önemli depremler</h5></center><hr>"
+        let htmlContent = "<center><h5>Önemli Depremler</h5></center><hr>"
         for (var key in listFeaturesImportantQuakes) {
 
             let coordinates = [parseFloat(listFeaturesImportantQuakes[key].longitude), parseFloat(listFeaturesImportantQuakes[key].latitude)];

@@ -32,9 +32,12 @@ font-family: sans-serif;
 font-size: 14px;
 margin:0;
 margin-left: 10px;
-margin-right: 10px;
+margin-right: 10px;    
+}
 
-    
+p.copyright {
+    font-size:12px;
+    color: white;
 }
 
 h5 {
@@ -171,6 +174,11 @@ p {
 font-size: 12px;
 }
 
+p.copyright {
+    font-size:12px;
+    color: white;
+}
+
 .infoQuakesImportant {
 width: 300px;
 height: 280px;
@@ -185,6 +193,11 @@ height: 280px;
 .buttonSideMenu {
 width: auto;
 height: auto;
+}
+
+.buttonData {
+    width: auto;
+    height: auto;
 }
 
 .openbtn {
@@ -229,6 +242,11 @@ height: 200px;
 
 p {
 font-size: 10px;
+}
+
+p.copyright {
+    font-size:10px;
+    color: white;
 }
 
 .infoLastQuakes {

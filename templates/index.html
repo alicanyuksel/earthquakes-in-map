@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Son Depremleri Göster</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Deprem Nerede Oldu ?</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-    <link rel="stylesheet" href="static/css/style.css?v=1">
+    <link rel="stylesheet" href="static/css/style.css?v=">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
 
     <!-- data received from api -->
@@ -36,7 +36,6 @@
             }
         }
 
-
         function setButtonContent() {
             if (navToggled) {
                 document.getElementById("openbtn").textContent = '\u2715 Kapat';
@@ -46,14 +45,14 @@
         }
 
 
-        /* Set the width of the sidebar to 250px (show it) */
+        /* Set display) */
         function openNav() {
-            document.getElementById("mySidebar").style.width = "auto";
+            document.getElementById("mySidebar").style.display = "block";
         }
         
-        /* Set the width of the sidebar to 0 (hide it) */
+        /* Close slidebar */
         function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("mySidebar").style.display = "none";
         }
         
     </script>
@@ -62,32 +61,28 @@
         
         
     <div id="map">
-        <script src="static/js/map.js?v=1"></script>
+        <script src="static/js/map.js?v="></script>
     </div>
 
-   
+
     <!-- 
         Last quakes box
     -->
 
-    <script src="static/js/lastQuakes.js?v=1"></script>
+    <script src="static/js/lastQuakes.js?v="></script>
     
 
     
     <!-- 
         Important quakes box
     -->
-    <script src="static/js/importantQuake.js?v=1"></script>   
-
-
-    <div class="buttonSideMenu"> 
-        <button id="openbtn" class="openbtn" onclick="toggleNav();">&#10005; Kapat</button>
-    </div>
-        
+    <script src="static/js/importantQuake.js?v="></script>   
 
     <div class="wrapper">
+        <div class="buttonSideMenu"> 
+            <button id="openbtn" class="openbtn" onclick="toggleNav();">&#10005; Kapat</button>
+        </div>
 
-    
     <div id="mySidebar" class="sidebar">
       
         <div id="infoLastQuakes" class='infoLastQuakes'></div><br>
@@ -96,7 +91,7 @@
 
 </div>
 
-    
+           
       <script> 
         let lastQuakesBox = document.getElementById("infoLastQuakes");
         writeLastQuakes(detailsOfAllQuakes, defaultRangeValue);
@@ -108,6 +103,6 @@
         
     </script>
 
-    
+
 </body>
 </html>

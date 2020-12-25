@@ -82,16 +82,15 @@
     </script>
 
     {% include "navbar.html" %}
-
-
-    <!-- loader div -->
-    <div id="loader"></div>
         
         
     <div id="map">
         <script src="static/js/map.js?v="></script>
     </div>
 
+
+    <!-- loader div -->
+    <div id="loader"></div>
 
     <!-- 
         Last quakes box
@@ -142,7 +141,7 @@
             } else {
                 loader.style.opacity = opacity;
                 window.setTimeout(function() {
-                    loadNow(opacity - 0.05);
+                    loadNow(opacity - 0.03);
                 }, 50);
             }
         }
@@ -154,7 +153,7 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             loader = document.getElementById('loader');
-            loadNow(1);
+            loadNow(1.5);
         });
     </script>
 

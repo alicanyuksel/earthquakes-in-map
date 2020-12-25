@@ -65,7 +65,7 @@ p.copyright {
 }
 
 h5 {
-color: red;
+color: rgb(228, 18, 108);
 font-family: sans-serif;
 margin-top: 10px;
 }
@@ -105,11 +105,11 @@ text-align: center;
 }
 
 .leftlabel {
-background-color: red;
+background-color: rgb(228, 18, 108);
 color: white;
 }
 .rightlabel {
-background-color: purple;
+background-color: rgb(108, 29, 129);
 color: white;
 }
 
@@ -167,7 +167,7 @@ margin-left: 50px;
 .openbtn {
 font-size: 20px;
 cursor: pointer;
-background-color: brown;
+background-color: rgb(228, 18, 108);
 border-radius: 20px;
 color: white;
 padding: 10px 15px;
@@ -175,7 +175,7 @@ border: none;
 }
 
 .openbtn:hover {
-background-color: brown;
+background-color: rgb(228, 18, 108);
 }
 
 

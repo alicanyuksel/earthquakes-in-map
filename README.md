@@ -4,12 +4,10 @@ For this project, I used **Python** on the backend (**Flask RESTful API**) and *
 
 **There are no commercial purposes.**
 
-    
 ## Data
 
 The data comes from **Kandilli Observatory and Earthquake Research Institute** and cannot be used for commercial purposes in any way without the written permission and approval of **Boğaziçi University**.
 
-
 ## Contact
 
-    Alican Yüksel - alicanyuksel@outlook.com
+    Alican Yüksel - alicanyuksel@outlookcom
